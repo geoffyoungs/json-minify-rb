@@ -1,6 +1,14 @@
 # JSON::Minify
 
-JSON.minify implementation
+JSON.minify implementation - rationale is here: https://github.com/getify/JSON.minify
+
+> Though comments are not officially part of the JSON standard, this post from
+> Douglas Crockford back in late 2005 helps explain the motivation behind this project.
+>
+> http://tech.groups.yahoo.com/group/json/message/152
+>
+> "A JSON encoder MUST NOT output comments. A JSON decoder MAY accept and ignore comments."
+
 
 ## Installation
 
@@ -17,16 +25,6 @@ Or install it yourself as:
     $ gem install json-minify
 
 ## Usage
-
-Rationale is here: https://github.com/getify/JSON.minify
-
-    Though comments are not officially part of the JSON standard, this post from
-    Douglas Crockford back in late 2005 helps explain the motivation behind this project.
-
-    http://tech.groups.yahoo.com/group/json/message/152
-
-    "A JSON encoder MUST NOT output comments. A JSON decoder MAY accept and ignore comments."
-
 
 API is compatible with JSON.minify in the npm node-json-minify package.
 
