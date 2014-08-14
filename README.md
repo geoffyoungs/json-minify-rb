@@ -9,6 +9,10 @@ JSON.minify implementation - rationale is here: https://github.com/getify/JSON.m
 >
 > "A JSON encoder MUST NOT output comments. A JSON decoder MAY accept and ignore comments."
 
+## Credits
+
+ - Matthew O'Riordan github.com/mattheworiordan - fix for handling empty strings
+   (in v0.0.2)
 
 ## Installation
 
