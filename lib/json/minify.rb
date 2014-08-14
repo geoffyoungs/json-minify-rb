@@ -19,7 +19,7 @@ module JSON
           buf << s
 
         # Scan strings
-        elsif s = ss.scan(/"(.*?[^\\])?"/)
+        elsif s = ss.scan(/""|(".*?[^\\])?"/)
           buf << s
 
         # Scan reserved words
