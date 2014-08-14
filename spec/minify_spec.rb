@@ -21,4 +21,14 @@ describe JSON::Minify do
   it "should cope with the example from https://github.com/getify/JSON.minify" do
     expect(JSON.minify( %Q'{ /* comment */ "foo": 42 \n }' )).to eql('{"foo":42}')
   end
+
+  it "should cope with the https://gist.github.com/mattheworiordan/72db0dfc933f743622eb" do
+    expect(JSON.minify('{ "PolicyName": { "Fn::Join" : [ "", [ "AblySnsPublish-", { "Ref" : "AWS::Region" }, "-", { "Ref" : "DataCenterID" } ] ] } }')).to \
+      eql('{"PolicyName":{"Fn::Join":["",["AblySnsPublish-",{"Ref":"AWS::Region"},"-",{"Ref":"DataCenterID"}]]}}')
+  end
+
+  it "should cope with escaped double quoted strings" do
+    expect(JSON.minify('{ "Statement1": "he said \"no way\" to the dog", "Statement2": "she said \"really?\"" }')).to \
+      eql('{"Statement1":"he said \"no way\" to the dog","Statement2":"she said \"really?\""}')
+  end
 end
