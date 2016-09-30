@@ -1,19 +1,21 @@
 require 'strscan'
 require 'json'
-require "json/minify/version"
+require 'json/minify/version'
 
 module JSON
   module Minify
     def self.included(mod)
       mod.send(:extend, self)
     end
+
     def minify(str)
-      ss, buf = StringScanner.new(str), ''
+      ss = StringScanner.new(str)
+      buf = ''
 
       until ss.eos?
         # Remove whitespace
         if s = ss.scan(/\s+/)
-          
+
         # Scan punctuation
         elsif s = ss.scan(/[{},:\]\[]/)
           buf << s
@@ -31,12 +33,12 @@ module JSON
           buf << s
 
         # Remove C++ style comments
-        elsif s = ss.scan(%r<//>)
+        elsif s = ss.scan(%r{//})
           ss.scan_until(/(\r?\n|$)/)
 
         # Remove C style comments
-        elsif s = ss.scan(%r'/[*]')
-          ss.scan_until(%r'[*]/') or raise SyntaxError, "Unterminated /*...*/ comment - #{ss.rest}"
+        elsif s = ss.scan(%r{/[*]})
+          ss.scan_until(%r{[*]/}) || raise(SyntaxError, "Unterminated /*...*/ comment - #{ss.rest}")
 
         # Anything else is invalid JSON
         else
