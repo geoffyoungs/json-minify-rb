@@ -30,6 +30,10 @@ Or install it yourself as:
 
 ## Usage
 
+Require the gem with the following line:
+
+    require 'json/minify'
+
 API is compatible with JSON.minify in the npm node-json-minify package.
 
     JSON.minify("{ }") #=> "{}"
